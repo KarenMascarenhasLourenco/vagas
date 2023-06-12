@@ -1,24 +1,21 @@
-var data =  require("./fakeData");
+const data = require("./fakeData");
 
-const getUser = ( req, res, next ) => {
-    
-    var name =  req.query.name;
+const getUser = (req, res, next) => {
+ const { name } = req.query;//usei detructuring para extrair name
+ const user = data.find((user) => user.name === name);
 
-    for(let i = 0; i < data.length;  i++) {
-        if(i.name == name) {
-            res.send(data[i]);
-        }
-    }
+ if (user) {
+  return res.status(200).send(user); //uso dos returns garante fim da execução da função
+ }
 
+ return res.status(404).send("Usuário não encontrado");
 };
 
-const getUsers = ( req, res, next ) => {
-    
-    res.send(data);
-    
+const getUsers = (req, res, next) => {
+ return res.status(200).send(data);
 };
 
 module.exports = {
-    getUser,
-    getUsers
+ getUser,
+ getUsers,
 };
