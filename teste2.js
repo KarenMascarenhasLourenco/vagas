@@ -1,17 +1,14 @@
 var data =  require("./fakeData");
 
 module.exports = function(req, res){
-  
-    var name =  req.body.name;
-    var jov =  req.body.job;
-    
-    var newUser = {
-        name: name,
-        job: job,
-    }
+    const { name, job } = req.body;// uso de destructuring
 
-    data.push(newUser)
-    
-    res.send(newUser);
+    const newUser = {
+    name: name,
+    job: job,
+    };
 
+ data.push(newUser); //adiciona novo usuário ao array
+
+ res.send(newUser); // o objeto é retornado com resposta da requisição POST
 };
