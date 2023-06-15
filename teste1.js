@@ -1,4 +1,4 @@
-const data = require("./fakeData");
+var data = require("./fakeData");
 
 const getUser = (req, res, next) => {
  const { name } = req.query;//usei detructuring para extrair name
