@@ -1,9 +1,14 @@
+const { data } = require("./teste1");
 
+module.exports = function (req, res) {
+ var name = req.query.name;
+ var count = 0;
 
-module.exports = function(req, res){
-    
-    var name =  req.query.name;
+ data.forEach(function (user) {
+  if (user.name === name) {
+   count++;
+  }
+ });
 
-    res.send("Usuário " +  name  + "  foi lido 0 vezes.");
-
+ res.send("Usuário " + name + " foi lido " + count + " vezes.");
 };
